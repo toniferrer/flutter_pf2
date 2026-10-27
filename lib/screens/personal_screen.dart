@@ -48,6 +48,7 @@ class _PersonalPageState extends State<PersonalPage> {
           ),
           ElevatedButton(
             onPressed: () {
+              persona.name = namePersona.text;
               Navigator.pop(context, '/');
             },
             child: Text("Save and return"),

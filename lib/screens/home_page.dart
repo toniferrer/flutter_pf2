@@ -8,11 +8,11 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+final persona = Persona();
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    Persona persona = new Persona();
-
     return Scaffold(
       appBar: AppBar(
         title: Text("DevProfile M3"),
@@ -30,8 +30,10 @@ class _HomePageState extends State<HomePage> {
           ],
           ),
           ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/edit', arguments: persona);
+            onPressed: () async {
+              await Navigator.pushNamed(context, '/edit', arguments: persona);
+              setState(() {
+              });
             },
             child: Text("Edit Profile"),
           ),
