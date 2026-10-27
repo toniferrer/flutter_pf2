@@ -17,26 +17,33 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("DevProfile M3"),
         ),
+      floatingActionButton: FloatingActionButton(onPressed: () async {
+        await Navigator.pushNamed(context, '/edit', arguments: persona);
+        setState(() {
+        });
+      },
+      child: Text("Edit"),
+      ),
       body: Column(
         children: [
-          Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(padding: const EdgeInsets.all(10),
-            child: Text("Name: ${persona.name}"),
-            ),
-            Text("Email: ${persona.email}"),
-            Text("Date of birth: ${persona.dateBirth}"),
+          Text("Name: ${persona.name}")
           ],
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              await Navigator.pushNamed(context, '/edit', arguments: persona);
-              setState(() {
-              });
-            },
-            child: Text("Edit Profile"),
-          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          Text("Email: ${persona.email}"),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          Text("Date of birth: ${persona.dateBirth}")
+          ],
+        ),
       ],),
     );
   }

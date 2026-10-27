@@ -14,6 +14,7 @@ class _PersonalPageState extends State<PersonalPage> {
     final persona = ModalRoute.of(context)!.settings.arguments as Persona;
     final namePersona = TextEditingController(text: persona.name);
     final emailPersona = TextEditingController(text: persona.email);
+    final datePersona = TextEditingController(text: persona.dateBirth);
 
     return Scaffold(
       appBar: AppBar(
@@ -27,6 +28,7 @@ class _PersonalPageState extends State<PersonalPage> {
             Expanded(child:
               TextField(
                 controller: namePersona,
+                textCapitalization: TextCapitalization.characters,
                 decoration: InputDecoration(
                   labelText: "Name"
                 ),
@@ -41,6 +43,20 @@ class _PersonalPageState extends State<PersonalPage> {
                 controller: emailPersona,
                 decoration: InputDecoration(
                   labelText: "Email"
+                ),
+              ),
+            ),
+          ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Expanded(child:
+              TextField(
+                controller: datePersona,
+                readOnly: true,
+                decoration: InputDecoration(
+                  labelText: "Date of birth"
                 ),
               ),
             ),
