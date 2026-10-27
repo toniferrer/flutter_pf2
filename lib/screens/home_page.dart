@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/edit');
+              Navigator.pushNamed(context, '/edit', arguments: persona);
             },
             child: Text("Edit Profile"),
           ),
