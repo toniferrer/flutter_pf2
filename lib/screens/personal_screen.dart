@@ -28,7 +28,7 @@ class _PersonalPageState extends State<PersonalPage> {
             Expanded(child:
               TextField(
                 controller: namePersona,
-                textCapitalization: TextCapitalization.characters,
+                textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
                   labelText: "Name"
                 ),
@@ -41,6 +41,7 @@ class _PersonalPageState extends State<PersonalPage> {
             Expanded(child:
               TextField(
                 controller: emailPersona,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: "Email"
                 ),
