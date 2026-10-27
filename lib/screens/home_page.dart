@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
           ],
           ),
           ElevatedButton(
-            onPressed: null, 
+            onPressed: () {
+              Navigator.pushNamed(context, '/edit');
+            },
             child: Text("Edit Profile"),
           ),
       ],),

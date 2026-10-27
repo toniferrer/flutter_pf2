@@ -5,5 +5,8 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: const HomePage(),
+    routes: {
+      '/edit':(context) => PersonalPage(),
+    },
   ));
 }
