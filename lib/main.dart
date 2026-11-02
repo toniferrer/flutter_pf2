@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/personal_screen.dart';
+import 'screens/widgets_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -8,6 +9,7 @@ void main() {
     home: const HomePage(),
     routes: {
       '/edit':(context) => PersonalPage(),
+      '/widgets':(context) => WidgetsScreen(),
     },
   ));
 }
