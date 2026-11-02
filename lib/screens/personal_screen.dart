@@ -9,12 +9,21 @@ class PersonalPage extends StatefulWidget {
 }
 
 class _PersonalPageState extends State<PersonalPage> {
+    late Persona persona;
+    late TextEditingController namePersona;
+    late TextEditingController emailPersona;
+    late TextEditingController datePersona;
+    late TextEditingController surnamePersona;
+    late TextEditingController passwordPersona;
   @override
   Widget build(BuildContext context) {
-    final persona = ModalRoute.of(context)!.settings.arguments as Persona;
-    final namePersona = TextEditingController(text: persona.name);
-    final emailPersona = TextEditingController(text: persona.email);
-    final datePersona = TextEditingController(text: persona.dateBirth);
+
+    persona = ModalRoute.of(context)!.settings.arguments as Persona;
+    namePersona = TextEditingController(text: persona.name);
+    emailPersona = TextEditingController(text: persona.email);
+    datePersona = TextEditingController(text: persona.dateBirth);
+    surnamePersona = TextEditingController(text: persona.surname);
+    passwordPersona = TextEditingController(text: persona.password);
 
     return Scaffold(
       appBar: AppBar(
@@ -38,6 +47,18 @@ class _PersonalPageState extends State<PersonalPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Expanded(child: 
+              TextField(
+                controller: surnamePersona,
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(labelText: "Surname"),
+              ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
             Expanded(child:
               TextField(
                 controller: emailPersona,
@@ -52,6 +73,18 @@ class _PersonalPageState extends State<PersonalPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Expanded(child: 
+              TextField(
+                controller: passwordPersona,
+                obscureText: true,
+                decoration: InputDecoration(labelText: "Password"),
+              ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
             Expanded(child:
               TextField(
                 controller: datePersona,
@@ -59,6 +92,17 @@ class _PersonalPageState extends State<PersonalPage> {
                 decoration: InputDecoration(
                   labelText: "Date of birth"
                 ),
+                onTap: ()async {
+                  final picked = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.tryParse(persona.dateBirth) ?? DateTime(2000),
+                    firstDate: DateTime(1900), 
+                    lastDate: DateTime.now(),
+                    );
+                    if (picked != null) {
+                      datePersona.text = "${picked.day}/${picked.month}/${picked.year}";
+                    }
+                },
               ),
             ),
           ],
@@ -66,7 +110,11 @@ class _PersonalPageState extends State<PersonalPage> {
           ElevatedButton(
             onPressed: () {
               persona.name = namePersona.text;
-              Navigator.pop(context, '/');
+              persona.surname = surnamePersona.text;
+              persona.email = emailPersona.text;
+              persona.password = passwordPersona.text;
+              persona.dateBirth = datePersona.text;
+              Navigator.pop(context);
             },
             child: Text("Save and return"),
           )

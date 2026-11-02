@@ -3,5 +3,5 @@ class Persona{
   String surname = "Lacoste";
   String email = "julia@gmail.com";
   String password = "";
-  String dateBirth = "24/02/1998";
+  String dateBirth = "1998-02-24";
 }
